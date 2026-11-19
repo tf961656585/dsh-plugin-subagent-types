@@ -1,0 +1,50 @@
+{
+  "name": "dsh-plugin-subagent-types",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tf961656585/dsh-plugin-subagent-types.git"
+  },
+  "type": "module",
+  "description": "Agent organization for DSH: a left-sidebar panel for the main agent's job description (injected into the system prompt) and for subagent types (fixed model routes and toolsets); every delegation path pins children to a type instead of inheriting the parent model.",
+  "icon": "./icon.svg",
+  "exports": {
+    ".": "./host.js",
+    "./client": "./client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "host.js",
+    "client.js",
+    "lib",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tool-subagent": "*",
+    "zod": "*"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  }
+}

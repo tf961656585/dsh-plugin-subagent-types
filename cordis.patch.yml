@@ -1,0 +1,21 @@
+# Agent organization: one row; types and the main-agent job context live in
+# storage domains, managed in the Agent Organization panel (left sidebar) or
+# through the plugin's tools.
+# The config seeds below are create-if-absent: stored edits always win.
+# A type is a delegation policy (route + read-only flag), not an agent preset.
+- insert:
+    - id: subagent-types
+      name: dsh-plugin-subagent-types
+      config:
+        defaultType: worker
+        types:
+          - id: explore
+            description: Read-only investigation of code, docs, or data; reports findings with evidence without changing anything.
+            provider: magpie
+            model: opencode-go/deepseek-v4.1-flash
+            readonly: true
+          - id: worker
+            description: Scoped implementation or analysis work; verifies its own work and returns a distilled result.
+            provider: magpie
+            model: bailian-token-plan/qwen4-max
+            readonly: false

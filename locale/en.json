@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Agent Organization",
+    "description": "The Agent Organization panel in the left sidebar manages both the main agent's job description and the subagent types. The job description is written into the main agent's system prompt and takes effect on the next reply after saving; subagents are not affected. Each subagent type (like explore and worker) pins one fixed model, and read-only types deny mutation tools. Every delegation path pins its children to a type instead of inheriting the main agent's model. The panel is the only management surface; the chat management tools edit types too."
+  }
+}
